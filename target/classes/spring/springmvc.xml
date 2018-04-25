@@ -17,7 +17,8 @@
        http://www.springframework.org/schema/tx
        http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/tool http://www.springframework.org/schema/tool/spring-tool.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
     <!--对于单个注解的Handler可以单个配置，实际开发过程使用扫描-->
-    <context:component-scan base-package="com" />
+    <context:component-scan base-package="com.controller" />
+
     <!--代替配置映射器和适配器-->
     <mvc:annotation-driven />
     <!--视图解析器，解析jsp，默认使用jstl,classpath下要有jstl的包-->

@@ -1,6 +1,7 @@
 package com.controller;
 
 import com.entity.Items;
+import com.entity.ItemsCustom;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,12 +18,13 @@ import java.util.List;
 public class ItemsController {
     @Autowired
     private ItemsService itemsService;
-    @RequestMapping("/queryItems")
-    public ModelAndView queryItems() throws Exception{
-        List<Items> list = itemsService.findItemsList();
+   @RequestMapping("/queryItems")
+   public ModelAndView queryItems() throws Exception{
+        List<ItemsCustom> list = itemsService.findItemsList(null);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("items",list);
         modelAndView.setViewName("index");
         return modelAndView;
     }
+
 }

@@ -1,6 +1,7 @@
 package com.dao;
 
-import com.entity.Items;
+import com.entity.ItemsCustom;
+import com.entity.ItemsQueryVo;
 
 import java.util.List;
 
@@ -8,12 +9,13 @@ import java.util.List;
  * @author:Yang
  * @date:2018/4/24
  */
+
 public interface ItemsMapperCustom {
     /**
-     * 查询商品信息
      *
+     * @param itemsQueryVo
      * @return
      * @throws Exception
      */
-    List<Items> findItemsList() throws Exception;
+    List<ItemsCustom> findItemsList(ItemsQueryVo itemsQueryVo) throws Exception;
 }

@@ -26,3 +26,5 @@ mybatis和springmvc整合，通过spring管理mapper接口
 2 在springmvc配置文件中，可以使用`<mvc:annotation-driven />`代替映射器和适配器配置，自己在配置过程中导入错误的头文件，导致配置无法识别
 
 3 jdk版本不要过高
+
+[整合详细说明](https://www.jianshu.com/p/dd1d957ea715)

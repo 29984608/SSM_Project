@@ -11,10 +11,29 @@ import java.util.List;
  */
 public interface ItemsService {
     /**
+     *查询商品信息
      *
      * @param itemsQueryVo
      * @return
      * @throws Exception
      */
     List<ItemsCustom> findItemsList(ItemsQueryVo itemsQueryVo) throws Exception;
+
+    /**
+     * 根据id查询商品信息
+     *
+     * @param id 查询商品id
+     * @return
+     * @throws Exception
+     */
+    ItemsCustom findItemsById(Integer id) throws Exception;
+
+    /**
+     * 修改商品信息
+     *
+     * @param id 修改商品id
+     * @param itemsCustom 修改商品信息
+     * @throws Exception
+     */
+    void updateItems(Integer id,ItemsCustom itemsCustom) throws Exception;
 }

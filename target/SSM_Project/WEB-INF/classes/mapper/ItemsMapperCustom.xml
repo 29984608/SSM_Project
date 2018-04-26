@@ -17,4 +17,20 @@
           <include refid="query_items_where"></include>
       </where>
     </select>
+
+    <select id="findItemsById" parameterType="int" resultType="com.entity.ItemsCustom">
+      select * from items where id = #{id};
+    </select>
+
+    <update id="updateItems">
+      update items set
+      name='#{itemsCustom.name}',
+      price='#{itemsCustom.price}',
+      detail='#{itemsCustom.detail}',
+      pic='#{itemsCustom.pic}',
+      createtime='#{itemsCustom.createtime}'
+      where
+      id = #{id};
+    </update>
+
 </mapper>

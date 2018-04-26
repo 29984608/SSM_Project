@@ -14,7 +14,7 @@
     <title>商品信息修改页面</title>
 </head>
 <body>
-<form action="" method="post">
+<form action="${pageContext.request.contextPath}/items/editItemsSubmit.action" method="post">
     <table width="100%" border="1">
         <tr>
             <td colspan="2"> 修改商品信息</td>

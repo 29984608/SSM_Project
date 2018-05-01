@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import com.service.ItemsService;
 
@@ -37,19 +38,18 @@ public class ItemsController {
      * 商品信息修改页面展示
      */
     @RequestMapping("/editItems")
-    public ModelAndView editItems() throws Exception {
-        ItemsCustom itemsCustom = itemsService.findItemsById(1);
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("itemsCustom", itemsCustom);
-        modelAndView.setViewName("editItems");
-        return modelAndView;
+    public String editItems(Model model,@RequestParam(value = "id",required = true,defaultValue = "1") Integer items_id) throws Exception {
+        ItemsCustom itemsCustom = itemsService.findItemsById(items_id);
+        model.addAttribute("itemsCustom", itemsCustom);
+        return "editItems";
     }
 
     /**
      * 商品信息提交
      */
-    @RequestMapping(value = "/editItemsSubmit",method = {RequestMethod.GET,RequestMethod.POST})
-    public String editItemsSubmit() throws Exception {
-        return "forward:/items/queryItems.action";
+    @RequestMapping(value = "/editItemsSubmit")
+    public String editItemsSubmit(Integer id,ItemsCustom itemsCustom) throws Exception {
+        itemsService.updateItems(id,itemsCustom);
+        return "success";
     }
 }

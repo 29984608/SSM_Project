@@ -24,11 +24,11 @@
 
     <update id="updateItems">
       update items set
-      name='#{itemsCustom.name}',
-      price='#{itemsCustom.price}',
-      detail='#{itemsCustom.detail}',
-      pic='#{itemsCustom.pic}',
-      createtime='#{itemsCustom.createtime}'
+      name=#{itemsCustom.name},
+      price=#{itemsCustom.price},
+      detail=#{itemsCustom.detail},
+      pic=#{itemsCustom.pic},
+      createtime=#{itemsCustom.createtime}
       where
       id = #{id};
     </update>

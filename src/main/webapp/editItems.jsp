@@ -20,6 +20,10 @@
             <td colspan="2"> 修改商品信息</td>
         </tr>
         <tr>
+            <td>商品ID</td>
+            <td><input type="text" name="id" value="${itemsCustom.id}" readonly="readonly"></td>
+        </tr>
+        <tr>
             <td>商品名称</td>
             <td><input type="text" name="name" value="${itemsCustom.name}"></td>
         </tr>
@@ -27,10 +31,14 @@
             <td>商品价格</td>
             <td><input type="text" name="price" value="${itemsCustom.price}"></td>
         </tr>
-<%--        <tr>
+        <tr>
             <td>商品生成日期</td>
-            <td><input type="text" name="createtime" value="${itemsCustom.createtime}"></td>
-        </tr>--%>
+            <td><input type="text" name="createtime" value="<fmt:formatDate value="${itemsCustom.createtime}" pattern="yyyy/MM/dd"/> " ></td>
+        </tr>
+        <tr>
+            <td>商品识别码</td>
+            <td><input type="text" name="pic" value="${itemsCustom.pic}"></td>
+        </tr>
         <tr>
             <td>商品简介</td>
             <td>

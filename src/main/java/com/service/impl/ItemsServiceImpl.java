@@ -41,9 +41,8 @@ public class ItemsServiceImpl implements ItemsService {
     }
 
     @Override
-    public void updateItems(Integer id, ItemsCustom itemsCustom) throws Exception {
+    public void updateItems(Integer id,ItemsCustom itemsCustom) throws Exception {
         //添加业务效验，判断id是否为空
-
         itemsMapperCustom.updateItems(id,itemsCustom);
     }
 }

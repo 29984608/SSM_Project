@@ -30,11 +30,10 @@ public interface ItemsMapperCustom {
     ItemsCustom findItemsById(Integer id) throws Exception;
 
     /**
-     * 修改商品信息
      *
-     * @param id 修改商品id
-     * @param itemsCustom 修改商品信息
+     * @param id
+     * @param itemsCustom
      * @throws Exception
      */
-    void updateItems(@Param("id") Integer id, @Param("itemsCustom") ItemsCustom itemsCustom) throws Exception;
+    void updateItems(@Param("id") Integer id,@Param("itemsCustom") ItemsCustom itemsCustom) throws Exception;
 }

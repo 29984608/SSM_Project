@@ -12,8 +12,19 @@
     <!--对于单个注解的Handler可以单个配置，实际开发过程使用扫描-->
     <context:component-scan base-package="com.controller" />
 
-    <!--代替配置映射器和适配器-->
-    <mvc:annotation-driven />
+    <!--代替配置映射器和适配器
+    向处理器适配器中注入自定义的参数绑定组件
+    -->
+    <mvc:annotation-driven conversion-service="conversionService"></mvc:annotation-driven>
+    <!--自定义参数绑定-->
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <list>
+                <!--转换器路径-->
+                <bean class="com.controller.converter.CustomDateConverter"></bean>
+            </list>
+        </property>
+    </bean>
     <!--视图解析器，解析jsp，默认使用jstl,classpath下要有jstl的包-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <!--jsp路径前缀-->

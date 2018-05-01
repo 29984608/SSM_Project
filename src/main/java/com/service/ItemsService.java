@@ -31,7 +31,6 @@ public interface ItemsService {
     /**
      * 修改商品信息
      *
-     * @param id 修改商品id
      * @param itemsCustom 修改商品信息
      * @throws Exception
      */

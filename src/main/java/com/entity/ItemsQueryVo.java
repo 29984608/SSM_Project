@@ -1,5 +1,7 @@
 package com.entity;
 
+import java.util.List;
+
 /**
  * 商品包装对象
  * @author: Y
@@ -14,6 +16,8 @@ public class ItemsQueryVo{
      *  为了系统可扩展性，对原始生成的po进行扩展
      */
     private  ItemsCustom itemsCustom;
+
+    private List<ItemsCustom> itemsList;
 
     public Items getItems() {
         return items;

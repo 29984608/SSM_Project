@@ -53,4 +53,18 @@ public class ItemsController {
         itemsService.updateItems(id,itemsCustom);
         return "success";
     }
+
+    /**
+     * 批量删除
+     * @param items_id
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/deleteItems")
+    public String deleteItems(Integer[] items_id) throws Exception{
+
+        return "success";
+    }
+
+
 }

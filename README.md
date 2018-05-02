@@ -29,4 +29,6 @@ mybatis和springmvc整合，通过spring管理mapper接口
 
 [整合详细说明](https://www.jianshu.com/p/dd1d957ea715)
 
+功能说明 
 
+简单的crud操作 ，例如：商品信息查询，商品信息修改，商品批量删除

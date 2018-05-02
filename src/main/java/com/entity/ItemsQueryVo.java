@@ -16,7 +16,9 @@ public class ItemsQueryVo{
      *  为了系统可扩展性，对原始生成的po进行扩展
      */
     private  ItemsCustom itemsCustom;
-
+    /**
+     * list包装类型
+     */
     private List<ItemsCustom> itemsList;
 
     public Items getItems() {

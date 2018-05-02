@@ -1,6 +1,7 @@
 package com.controller;
 
 import com.entity.ItemsCustom;
+import com.entity.ItemsQueryVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,8 +29,8 @@ public class ItemsController {
      * 查询商品信息
      */
     @RequestMapping("/queryItems")
-    public String queryItems(Model model) throws Exception {
-        List<ItemsCustom> list = itemsService.findItemsList(null);
+    public String queryItems(Model model,ItemsQueryVo itemsQueryVo) throws Exception {
+        List<ItemsCustom> list = itemsService.findItemsList(itemsQueryVo);
         model.addAttribute("items", list);
         return "index";
     }

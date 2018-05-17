@@ -5,6 +5,9 @@ import com.entity.ItemsQueryVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.service.ItemsService;
@@ -58,7 +61,15 @@ public class ItemsController {
      * @throws Exception
      */
     @RequestMapping(value = "/editItemsSubmit")
-    public String editItemsSubmit(Integer id,ItemsCustom itemsCustom) throws Exception {
+    public String editItemsSubmit(Model model,Integer id, @Validated ItemsCustom itemsCustom, BindingResult bindingResult) throws Exception {
+        if(bindingResult.hasErrors()){
+           List<ObjectError> allErrors = bindingResult.getAllErrors();
+           for (ObjectError objectError:allErrors){
+               System.out.println(objectError.getDefaultMessage());
+           }
+            model.addAttribute("allErrors",allErrors);
+            return "editItems";
+        }
         itemsService.updateItems(id,itemsCustom);
         return "success";
     }

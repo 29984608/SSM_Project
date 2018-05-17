@@ -1,5 +1,7 @@
 package com.entity;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 /**
@@ -8,10 +10,12 @@ import java.util.Date;
  */
 public class Items {
     private int id;
+    @Size(min = 1,max = 5,message = "items.name.length")
     private String name;
     private float price;
     private String detail;
     private String pic;
+    @NotNull(message = "items.time.error")
     private Date createtime;
 
     public int getId() {

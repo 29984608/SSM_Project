@@ -31,7 +31,8 @@
         <tr>
             <td>商品名称：<input type="text" name="itemsCustom.name" /></td>
             <td><input type="button" value="查询" onclick="queryItems()"/>
-            <input type="button" value="批量删除" onclick="deleteItems()"/></td>
+                <input type="button" value="批量删除" onclick="deleteItems()"/>
+            </td>
         </tr>
     </table>
 

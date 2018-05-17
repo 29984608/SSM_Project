@@ -14,6 +14,11 @@
     <title>商品信息修改页面</title>
 </head>
 <body>
+<c:if test="${allErrors!=null}">
+    <c:forEach items="${allErrors}" var="error">
+${error.defaultMessage}
+    </c:forEach>
+</c:if>
 <form action="${pageContext.request.contextPath}/items/editItemsSubmit.action" method="post">
     <table width="100%" border="1">
         <tr>

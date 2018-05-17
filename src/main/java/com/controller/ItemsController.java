@@ -9,12 +9,15 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.service.ItemsService;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author:Yang
@@ -26,15 +29,30 @@ public class ItemsController {
     @Autowired
     private ItemsService itemsService;
 
+
+    /**
+     * 商品分类
+     * itemstypes表示最终将方法返回值放在request中的key
+     */
+    @ModelAttribute("itemstypes")
+    public Map<String, String> getItemsTypes() {
+        Map<String, String> itemType = new HashMap<String, String>();
+        itemType.put("101", "数码");
+        itemType.put("102", "母婴");
+        return itemType;
+    }
+
     /**
      * 查询商品信息
+     *
      * @param model
      * @param itemsQueryVo
      * @return String
      * @throws Exception
      */
     @RequestMapping("/queryItems")
-    public String queryItems(Model model,ItemsQueryVo itemsQueryVo) throws Exception {
+
+    public String queryItems(Model model, ItemsQueryVo itemsQueryVo) throws Exception {
         List<ItemsCustom> list = itemsService.findItemsList(itemsQueryVo);
         model.addAttribute("items", list);
         return "index";
@@ -42,13 +60,14 @@ public class ItemsController {
 
     /**
      * 商品信息修改页面展示
+     *
      * @param model
      * @param items_id
      * @return String
      * @throws Exception
      */
     @RequestMapping("/editItems")
-    public String editItems(Model model,@RequestParam(value = "id",required = true,defaultValue = "1") Integer items_id) throws Exception {
+    public String editItems(Model model, @RequestParam(value = "id", required = true, defaultValue = "1") Integer items_id) throws Exception {
         ItemsCustom itemsCustom = itemsService.findItemsById(items_id);
         model.addAttribute("itemsCustom", itemsCustom);
         return "editItems";
@@ -56,6 +75,7 @@ public class ItemsController {
 
     /**
      * 修改商品信息提交
+     *
      * @param id
      * @param itemsCustom
      * @return String
@@ -63,26 +83,29 @@ public class ItemsController {
      */
     @RequestMapping(value = "/editItemsSubmit")
     public String editItemsSubmit(Model model, Integer id, @Validated(value = ValidGroup1.class) ItemsCustom itemsCustom, BindingResult bindingResult) throws Exception {
-        if(bindingResult.hasErrors()){
-           List<ObjectError> allErrors = bindingResult.getAllErrors();
-           for (ObjectError objectError:allErrors){
-               System.out.println(objectError.getDefaultMessage());
-           }
-            model.addAttribute("allErrors",allErrors);
+        if (bindingResult.hasErrors()) {
+            List<ObjectError> allErrors = bindingResult.getAllErrors();
+            for (ObjectError objectError : allErrors) {
+                System.out.println(objectError.getDefaultMessage());
+            }
+            model.addAttribute("allErrors", allErrors);
+
+            model.addAttribute("itemsCustom", itemsCustom);
             return "editItems";
         }
-        itemsService.updateItems(id,itemsCustom);
+        itemsService.updateItems(id, itemsCustom);
         return "success";
     }
 
     /**
      * 批量删除
+     *
      * @param items_id
      * @return
      * @throws Exception
      */
     @RequestMapping(value = "/deleteItems")
-    public String deleteItems(Integer[] items_id) throws Exception{
+    public String deleteItems(Integer[] items_id) throws Exception {
         return "success";
     }
 

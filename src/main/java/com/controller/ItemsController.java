@@ -2,6 +2,7 @@ package com.controller;
 
 import com.entity.ItemsCustom;
 import com.entity.ItemsQueryVo;
+import com.entity.ValidGroup1;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -61,7 +62,7 @@ public class ItemsController {
      * @throws Exception
      */
     @RequestMapping(value = "/editItemsSubmit")
-    public String editItemsSubmit(Model model,Integer id, @Validated ItemsCustom itemsCustom, BindingResult bindingResult) throws Exception {
+    public String editItemsSubmit(Model model, Integer id, @Validated(value = ValidGroup1.class) ItemsCustom itemsCustom, BindingResult bindingResult) throws Exception {
         if(bindingResult.hasErrors()){
            List<ObjectError> allErrors = bindingResult.getAllErrors();
            for (ObjectError objectError:allErrors){

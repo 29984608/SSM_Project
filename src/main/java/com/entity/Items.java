@@ -10,7 +10,7 @@ import java.util.Date;
  */
 public class Items {
     private int id;
-    @Size(min = 1,max = 5,message = "items.name.length")
+    @Size(min = 1,max = 5,message = "请输入1-5位字符",groups = {ValidGroup1.class})
     private String name;
     private float price;
     private String detail;

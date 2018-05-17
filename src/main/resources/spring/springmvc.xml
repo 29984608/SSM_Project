@@ -18,7 +18,7 @@
     <!--代替配置映射器和适配器
     向处理器适配器中注入自定义的参数绑定组件
     -->
-    <mvc:annotation-driven conversion-service="conversionService" validator="validator"/>
+        <mvc:annotation-driven conversion-service="conversionService" validator="validator"/>
 
     <!--自定义参数绑定-->
     <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">

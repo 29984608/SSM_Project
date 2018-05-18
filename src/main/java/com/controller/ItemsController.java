@@ -14,11 +14,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.service.ItemsService;
+import org.springframework.web.multipart.MultipartFile;
 
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * @author:Yang
@@ -86,7 +89,11 @@ public class ItemsController {
      * @throws Exception
      */
     @RequestMapping(value = "/editItemsSubmit")
-    public String editItemsSubmit(Model model, Integer id, @Validated(value = ValidGroup1.class) ItemsCustom itemsCustom, BindingResult bindingResult) throws Exception {
+    public String editItemsSubmit(Model model, Integer id,
+                                  @Validated(value = ValidGroup1.class) ItemsCustom itemsCustom,
+                                  BindingResult bindingResult,
+                                  MultipartFile multipartFile) throws Exception {
+        //异常处理
         if (bindingResult.hasErrors()) {
             List<ObjectError> allErrors = bindingResult.getAllErrors();
             for (ObjectError objectError : allErrors) {
@@ -96,6 +103,22 @@ public class ItemsController {
 
             model.addAttribute("itemsCustom", itemsCustom);
             return "editItems";
+        }
+        //上传图片
+        //获取文件原始名
+        String originalFilename = multipartFile.getOriginalFilename();
+        if (multipartFile != null && originalFilename!=null && originalFilename.length()>0 ){
+            //存储图片物理物理路径
+            String pic_path = "E:\\IdeaProjects\\ssm_itemsDemo\\pic\\";
+            //新图片名称
+            String newFileName = UUID.randomUUID()+originalFilename.substring(originalFilename.lastIndexOf("."));
+            //新图片
+            File newFile = new File(pic_path+newFileName);
+            //将内存中的数据写入磁盘
+            multipartFile.transferTo(newFile);
+            //将新图片名称写到itemsCustom
+            itemsCustom.setPic(newFileName);
+
         }
         itemsService.updateItems(id, itemsCustom);
         return "success";

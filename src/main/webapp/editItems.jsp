@@ -19,7 +19,7 @@
 ${error.defaultMessage}
     </c:forEach>
 </c:if>
-<form action="${pageContext.request.contextPath}/items/editItemsSubmit.action" method="post">
+<form action="${pageContext.request.contextPath}/items/editItemsSubmit.action" method="post" enctype="multipart/form-data">
     <table width="100%" border="1">
         <tr>
             <td colspan="2"> 修改商品信息</td>
@@ -41,8 +41,12 @@ ${error.defaultMessage}
             <td><input type="text" name="createtime" value="<fmt:formatDate value="${itemsCustom.createtime}" pattern="yyyy/MM/dd"/> " ></td>
         </tr>
         <tr>
-            <td>商品识别码</td>
-            <td><input type="text" name="pic" value="${itemsCustom.pic}"></td>
+            <td>商品图片</td>
+            <td>
+                <c:if test="${itemsCustom.pic!=null}">
+                    <img src="/pic/${itemsCustom.pic}" width="100px" height="100px"><br>
+                </c:if>
+                <input type="file" name="multipartFile"></td>
         </tr>
         <tr>
             <td>商品简介</td>

@@ -36,3 +36,5 @@ mybatis和springmvc整合，通过spring管理mapper接口
 [商品修改信息效验](https://www.jianshu.com/p/200a5a9b1281)
 
 [异常处理](https://www.jianshu.com/p/e5e71414a21e)
+
+[图片上传](https://www.jianshu.com/p/c118888bec5f)

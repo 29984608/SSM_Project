@@ -3,6 +3,7 @@ package com.controller;
 import com.entity.ItemsCustom;
 import com.entity.ItemsQueryVo;
 import com.entity.ValidGroup1;
+import com.exception.CustomException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -69,6 +70,9 @@ public class ItemsController {
     @RequestMapping("/editItems")
     public String editItems(Model model, @RequestParam(value = "id", required = true, defaultValue = "1") Integer items_id) throws Exception {
         ItemsCustom itemsCustom = itemsService.findItemsById(items_id);
+        if (itemsCustom == null){
+            throw new CustomException("商品信息不存在");
+        }
         model.addAttribute("itemsCustom", itemsCustom);
         return "editItems";
     }

@@ -10,9 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import com.service.ItemsService;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -136,5 +134,9 @@ public class ItemsController {
         return "success";
     }
 
-
+    @RequestMapping("/resultView/{id}")
+    public @ResponseBody ItemsCustom resultView(@PathVariable("id") Integer id) throws Exception{
+        ItemsCustom list= itemsService.findItemsById(id);
+        return  list;
+    }
 }

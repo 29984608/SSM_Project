@@ -15,7 +15,7 @@
             $("#button").click(function () {
                 $.ajax({
                     type:'post',
-                    url:'/json/jsonTest.action',
+                    url:'/json/jsonTest',
                     data:'{"username":"张三","sex":"男"}',
                     contentType:'application/json;charset=utf-8',
                     success:function (data) {

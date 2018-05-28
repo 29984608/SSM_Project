@@ -19,7 +19,7 @@
 ${error.defaultMessage}
     </c:forEach>
 </c:if>
-<form action="${pageContext.request.contextPath}/items/editItemsSubmit.action" method="post" enctype="multipart/form-data">
+<form action="${pageContext.request.contextPath}/items/editItemsSubmit" method="post" enctype="multipart/form-data">
     <table width="100%" border="1">
         <tr>
             <td colspan="2"> 修改商品信息</td>

@@ -30,7 +30,7 @@
   </listener>
   <servlet>
       <!--spring mvc 前端控制器-->
-      <servlet-name>springmvc</servlet-name>
+      <servlet-name>springmvc_result</servlet-name>
       <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
       <init-param>
           <!--contextConfigLocation配置springmvc加载的配置文件（配置处理器，映射器，适配器等）
@@ -45,7 +45,7 @@
         使用此种方式实现RESTful风格的url
         第三种：/*,错误-->
     <servlet-mapping>
-        <servlet-name>springmvc</servlet-name>
-        <url-pattern>*.action</url-pattern>
+        <servlet-name>springmvc_result</servlet-name>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
 </web-app>
